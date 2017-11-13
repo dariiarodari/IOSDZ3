@@ -65,9 +65,12 @@ class ViewController: UIViewController {
 
         print("==================")
         print("Collections Hard: Задание 1.")
+        print(checkIfIsInArray(someArray: myArray, someElement: "Two"))
 
         print("==================")
         print("Collections Hard: Задание 2.")
+        printDictionaryKeys(someDictionary: myDictionary)
+        pringDictionaryValues(someDictionary: myDictionary)
 
         print("==================")
         print("Collections Hard: Задание 3.")
@@ -173,9 +176,49 @@ class ViewController: UIViewController {
 
     //  Collections Hard: Задание 1. Создать метод который принимает 2 аргумента: массив строк и просто строку. Метод возвращает true или false в зависимости есть ли данный элемент (тот второй аргумент, который строка) в массиве (тот первый аргумент, который массив строк). например массив let array = [“one”, “two”] и если передать в этот метод “one“ то должно вернуть true а если передать “three” то должно вернуть false
 
+    let myArray = ["One", "Two", "Three"]
+    func checkIfIsInArray(someArray: Array <String>, someElement: String) -> Bool {
+        let result = someArray.contains(someElement)
+        return result
+    }
+
     //  Collections Hard: Задание 2. метод который выведет все ключи словаря; метод который выведет все значения словаря
 
-    //  Collections Hard: Задание 3. ортировка массива не встроенным методом по возрастанию + удалить дубликаты. Например задается массив [3, 6, 1, 2, 2, 6, 13, 77, 36]. Результат должен быть [1, 2, 3, 6, 13, 36, 77]
+    let myDictionary = [1 : "First",
+                        2 : "Second",
+                        3 : "Third"]
+
+    func pringDictionaryValues(someDictionary: Dictionary<Int, String>) {
+        for value in someDictionary.values {
+            print("Dictionary value is \(value)")
+        }
+    }
+
+    func printDictionaryKeys(someDictionary: Dictionary<Int, String>) {
+        for key in someDictionary.keys {
+            print("Dictionary key is \(key)")
+        }
+    }
+
+    //  Collections Hard: Задание 3. Cортировка массива не встроенным методом по возрастанию + удалить дубликаты. Например задается массив [3, 6, 1, 2, 2, 6, 13, 77, 36]. Результат должен быть [1, 2, 3, 6, 13, 36, 77]
+
+//    let amotherArray = [17, 38, 39, 10, 38, 47, 28]
+//    func sortAndRemoveDuplicates(array: Array<Int>) -> Array<Int> {
+//        var someArray = array
+//        let arrayCount = someArray.count
+//
+//        for _ in 0...arrayCount {
+//            for value in 1...arrayCount - 2 {
+//                if someArray[value-1] > someArray[value] {
+//                    let largerValue = someArray[value-1]
+//                    someArray[value-1] = someArray[value]
+//                    someArray[value] = largerValue
+//                }
+//            }
+//        }
+//
+//        return someArray
+//    }
 
     //  Collections Hard: Задание 4. Во ViewDidLoad создать словарь внутри которого будет 2 словаря (ключ - строка, значение - словарь). С любыми данными. Их мы будем передавать в метод, который напишем. Создать метод который будет принимать как параметры: словарь (такого типа как выше) и строку. Данный метод должен вернуть значение которое хранится внутри элемента ключ которого был передан как аргумент.
 
