@@ -13,6 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("String Easy: Задание 1.")
+        print(calculateMyName(Name: myName))
+        print("==================")
+
+        print("String Easy: Задание 2.")
+        print(generateUserName(firstName: "Dariia", lastName: "Rodionova"))
+        print("==================")
+
+        print("String Easy: Задание 3.")
+        print(checkMySex(fullName: "Дария Тихоновна"))
+        print("==================")
 
         print("Collections Easy: Задание 1.")
         isArrayEmptyYet()
@@ -65,7 +76,36 @@ class ViewController: UIViewController {
         print("Collections Hard: Задание 4.")
     }
 
-    
+    //  String Easy: Задание 1. Создать строку со своим именем. Написать метод который получает это имя и возвращает кол-во символов в строке с вашим именем. Возвращенное значение показать в консоль
+
+    let myName = "Dariia"
+    func calculateMyName(Name: String) -> Int {
+        let lettersInName = Int(Name.count)
+        return lettersInName
+    }
+
+    //  String Easy: Задание 2. Написать метод который принимает 2 слова, например имя и фамилию, возвращает юзернейм который имеет буквы нижнего регистра и разделяет имя и фамилию символом “_”
+
+    func generateUserName(firstName: String, lastName: String) -> String {
+        let username = firstName.lowercased() + "_" + lastName.lowercased()
+        return username
+    }
+
+    //  String Easy: Задание 3. Создать строку с именем и своим отчеством. Создать метод который проверит его на окончание “ич/на”. Выводит “М” или “Ж” в зависимости от окончания. Также учитывать регистр букв, то есть ИЧ или Ич или На и тд. Подсказка: в классе написан метод который позволяет проверить на суффикс или префикс, найдите и используйте его
+
+    let myFullName = "Дария Тихоновна"
+    func checkMySex(fullName: String) -> String {
+        let sex: String
+        if fullName.hasSuffix("ич") || fullName.hasSuffix("ИЧ") || fullName.hasSuffix("Ич"){
+            sex = "Man"
+        } else if fullName.hasSuffix("на") || fullName.hasSuffix("НА") || fullName.hasSuffix("На"){
+            sex = "Woman"
+        } else {
+            sex = "?"
+        }
+        return sex
+    }
+
 
     //  Collections Easy: Задание 1.Создать массив со значениями типа Int. Выполнить удаление всех элементов массива.
 
