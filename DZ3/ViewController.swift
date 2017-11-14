@@ -15,32 +15,38 @@ class ViewController: UIViewController {
 
         print("String Easy: Задание 1.")
         print(calculateMyName(Name: myName))
-
         print("==================")
+
         print("String Easy: Задание 2.")
         print(generateUserName(firstName: "Dariia", lastName: "Rodionova"))
-
         print("==================")
+
         print("String Easy: Задание 3.")
         print(checkMySex(fullName: "Дария Тихоновна"))
-
         print("==================")
+
         print("Collections Easy: Задание 1.")
-
+        isArrayEmptyYet()
         print("==================")
+
         print("Collections Easy: Задание 2.")
-
+        addTwoArrays()
         print("==================")
+
         print("Collections Easy: Задание 3")
+        printMyStrings(anyArray: arrayWithStrings)
 
         print("==================")
         print("Collections Easy: Задание 4.")
+        returnEdgeValues(oneMoreArray: anotherArrayWithStrings)
 
         print("==================")
         print("Collections Easy: Задание 5.")
+        addNewName()
 
         print("==================")
         print("Collections Easy: Задание 6.")
+        print(modifyDictionary(anyDictionary: alphabeticDictionary, keyName: "b"))
 
         print("==================")
         print("String Hard: Задание 1.")
@@ -59,9 +65,12 @@ class ViewController: UIViewController {
 
         print("==================")
         print("Collections Hard: Задание 1.")
+        print(checkIfIsInArray(someArray: myArray, someElement: "Two"))
 
         print("==================")
         print("Collections Hard: Задание 2.")
+        printDictionaryKeys(someDictionary: myDictionary)
+        pringDictionaryValues(someDictionary: myDictionary)
 
         print("==================")
         print("Collections Hard: Задание 3.")
@@ -91,26 +100,71 @@ class ViewController: UIViewController {
     func checkMySex(fullName: String) -> String {
         let sex: String
         if fullName.hasSuffix("ич") || fullName.hasSuffix("ИЧ") || fullName.hasSuffix("Ич"){
-            sex = "M"
+            sex = "Man"
         } else if fullName.hasSuffix("на") || fullName.hasSuffix("НА") || fullName.hasSuffix("На"){
-            sex = "Ж"
+            sex = "Woman"
         } else {
             sex = "?"
         }
         return sex
     }
 
+
     //  Collections Easy: Задание 1.Создать массив со значениями типа Int. Выполнить удаление всех элементов массива.
+
+    func isArrayEmptyYet() {
+        var myArray = [1, 2, 3, 4, 5]
+        myArray.removeAll()
+        print(myArray.count)
+    }
 
     //  Collections Easy: Задание 2.Создать 2 массива со значениями типа Int. Сделать соединение данных массивов. Результат вывести в консоль.
 
+    func addTwoArrays(){
+        let firatArray = [1,2,3]
+        let secondArray = [4,5,6]
+        let allTogather = firatArray + secondArray
+        print(allTogather)
+    }
+
     //  Collections Easy: Задание 3. Создать массив с любыми значениями типа строка. Создать метод который будет принимать как аргумент массив. Метод должен выводить в консоль элементы массива (по одному в одной строке)
+
+    let arrayWithStrings = ["One", "Two", "Three"]
+
+    func printMyStrings(anyArray: Array<String>) {
+        anyArray.forEach {
+            word in
+            print(word)
+        }
+    }
 
     //  Collections Easy: Задание 4.Создать массив с любыми значениями типа строка. Создать метод который будет принимать как аргумент массив. Метод должен возвращать массив который состоит из первого и последнего элемента массива, который был параметром
 
+    let anotherArrayWithStrings = ["Seven", "Eight", "Nine"]
+
+    func returnEdgeValues(oneMoreArray: Array<String>) {
+        let newArray = [oneMoreArray.first, oneMoreArray.last]
+        print(newArray)
+    }
+
     //  Collections Easy: Задание 5.Создать словарь в котором ключ будет Строкой а значение Целым. Например ключ - имя, значение - возраст. Должно быть 3 элемента (3 пары). Добавить в данный словарь еще 2 новых элемента.
 
+    func addNewName() {
+        var ageAndName = [10: "Anna", 20: "Svitlana", 30: "Tatiana"]
+        ageAndName[40] = "Ivan"
+        ageAndName[50] = "Oleg"
+        print(ageAndName)
+    }
+
     //  Collections Easy: Задание 6. Создать словарь в котором ключ будет Строкой а значение Целым. Например ключ - имя, значение - возраст. Должно быть 3 элемента (3 пары). Создать метод который будет иметь 2 параметра: словарь (типа “Строка : Целое”) и ключ типа Строка. Данный метод должен удалить из полученного (как первый аргумент) словаря элемент ключ которого был передан (как второй аргумент). Например: передаваемый словарь будет такой: ["Max": 1, "Dasha": 2, "Sergey": 3] И если передать второй аргумент "Sergey", то метод должен удалить элемент из передаваемого массива с ключом "Sergey".
+
+    let alphabeticDictionary = ["a":1, "b":2, "c":3]
+
+    func modifyDictionary(anyDictionary: Dictionary<String, Int>, keyName: String ) -> Dictionary<String, Int> {
+        var dictionatyTransformer = anyDictionary
+        dictionatyTransformer.removeValue(forKey: keyName)
+        return dictionatyTransformer
+    }
 
     //  String Hard: Задание 1. Создать метод который будет принимать строку где слитно написано Ваши ИмяФамилия “TungFam" и возвращать строку,  где они будут разделены пробелом. input = “TungFam”, output = “Tung Fam". Сложность задачи в том, что имя может быть любое. Например: Введя “ArtemPigor” должно вернуть “Artem Pigor”. Введя “AnnaSecure” должно вернуть “Anna Secure”. Введя “BlaCar” должно вернуть “Bla Car”. То есть алгоритм разбивает два слова которые начинаются на большую букву
 
@@ -122,9 +176,49 @@ class ViewController: UIViewController {
 
     //  Collections Hard: Задание 1. Создать метод который принимает 2 аргумента: массив строк и просто строку. Метод возвращает true или false в зависимости есть ли данный элемент (тот второй аргумент, который строка) в массиве (тот первый аргумент, который массив строк). например массив let array = [“one”, “two”] и если передать в этот метод “one“ то должно вернуть true а если передать “three” то должно вернуть false
 
+    let myArray = ["One", "Two", "Three"]
+    func checkIfIsInArray(someArray: Array <String>, someElement: String) -> Bool {
+        let result = someArray.contains(someElement)
+        return result
+    }
+
     //  Collections Hard: Задание 2. метод который выведет все ключи словаря; метод который выведет все значения словаря
 
-    //  Collections Hard: Задание 3. ортировка массива не встроенным методом по возрастанию + удалить дубликаты. Например задается массив [3, 6, 1, 2, 2, 6, 13, 77, 36]. Результат должен быть [1, 2, 3, 6, 13, 36, 77]
+    let myDictionary = [1 : "First",
+                        2 : "Second",
+                        3 : "Third"]
+
+    func pringDictionaryValues(someDictionary: Dictionary<Int, String>) {
+        for value in someDictionary.values {
+            print("Dictionary value is \(value)")
+        }
+    }
+
+    func printDictionaryKeys(someDictionary: Dictionary<Int, String>) {
+        for key in someDictionary.keys {
+            print("Dictionary key is \(key)")
+        }
+    }
+
+    //  Collections Hard: Задание 3. Cортировка массива не встроенным методом по возрастанию + удалить дубликаты. Например задается массив [3, 6, 1, 2, 2, 6, 13, 77, 36]. Результат должен быть [1, 2, 3, 6, 13, 36, 77]
+
+//    let amotherArray = [17, 38, 39, 10, 38, 47, 28]
+//    func sortAndRemoveDuplicates(array: Array<Int>) -> Array<Int> {
+//        var someArray = array
+//        let arrayCount = someArray.count
+//
+//        for _ in 0...arrayCount {
+//            for value in 1...arrayCount - 2 {
+//                if someArray[value-1] > someArray[value] {
+//                    let largerValue = someArray[value-1]
+//                    someArray[value-1] = someArray[value]
+//                    someArray[value] = largerValue
+//                }
+//            }
+//        }
+//
+//        return someArray
+//    }
 
     //  Collections Hard: Задание 4. Во ViewDidLoad создать словарь внутри которого будет 2 словаря (ключ - строка, значение - словарь). С любыми данными. Их мы будем передавать в метод, который напишем. Создать метод который будет принимать как параметры: словарь (такого типа как выше) и строку. Данный метод должен вернуть значение которое хранится внутри элемента ключ которого был передан как аргумент.
 
